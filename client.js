@@ -48,11 +48,34 @@ function employeeData(employees) {
   } // end for loop
 } // end employeeData function
 
-function calculateBonus(employee) {
-  //let employeeBonus = [];
-  //let bonusPercentage = logic..;
-  //let totalCompensation = logic..;
-  //let totalBonus = logic..;
-  employeeBonus.push({name: employees[i].name, bonusPercentage: })
-}
-
+function calculateBonus(person) {
+ let bonusPercentage = 0;
+ if(person.reviewRating <= 2){
+   bonusPercentage = 0;
+ }
+ else if(person.reviewRating == 3){
+   bonusPercentage = 4;
+ }
+ else if(person.reviewRating == 4){
+   bonusPercentage = 6;
+ } 
+ else if(person.reviewRating == 5){
+   bonusPercentage = 10;
+ } // end reviewRating conditional
+ if(person.employeeNumber < 10000){
+   bonusPercentage = bonusPercentage + 5;
+ } // end employeeNumber conditional
+ if(person.annualSalary >= 65000){
+   bonusPercentage = bonusPercentage - 1;
+ } // end annualSalary conditional
+ if(bonusPercentage > 13){
+   bonusPercentage = 13;
+ } // ceiling on bonusPercentage
+ if(bonusPercentage < 0){
+   bonusPercentage = 0;
+ } // floor on bonusPercentage
+ 
+console.log('Total Bonus Percentage: ');
+return bonusPercentage;
+ // employeeBonus.push({name: employees[i].name, bonusPercentage: });
+} //end calculateBonus
