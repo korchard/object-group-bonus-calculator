@@ -31,6 +31,10 @@ const employees = [
   }
 ];
 
+let bonusPercentage = 0;
+let totalCompensation = grossYearly;
+let totalBonus = 0;
+
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
 
 // Take small steps! Don't write a for loop and two functions that do all of the calculations right away.
@@ -41,6 +45,7 @@ const employees = [
 // Ask questions when you don't.
 
 console.log( employees );
+console.log(2 + 5 / 2);
 
 function employeeData(employees) {
   for (let i = 0; i < employees.length; i++) {
@@ -49,7 +54,6 @@ function employeeData(employees) {
 } // end employeeData function
 
 function calculateBonus(person) {
- let bonusPercentage = 0;
  if(person.reviewRating <= 2){
    bonusPercentage = 0;
  }
@@ -77,5 +81,27 @@ function calculateBonus(person) {
  
 console.log('Total Bonus Percentage: ');
 return bonusPercentage;
+totalCompCalculation();
+totalBonusCalculation();
  // employeeBonus.push({name: employees[i].name, bonusPercentage: });
 } //end calculateBonus
+
+function totalCompCalculation(){
+  let grossYearly = person.annualSalary + (person.annualSalary * person.bonusPercentage);
+  grossYearly = grossYearly / 100;
+  return grossYearly;
+} // end totalCompCalculation function
+
+function totalBonusCalculation(){
+  let totalBonus = grossYearly - person.annualSalary;
+  return totalBonus;
+} // end totalBonusCalculation function
+
+function newEmployeeObject(name, bonusPercentage, totalCompensation, totalBonus) {
+  let newEmployeeData = {
+    name: name,
+    bonusPercentage: bonusPercentage,
+    totalCompensation: totalCompensation,
+    totalBonus: totalBonus
+  };
+}
