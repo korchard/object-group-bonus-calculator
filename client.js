@@ -31,9 +31,6 @@ const employees = [
   }
 ];
 
-let bonusPercentage = 0;
-let totalCompensation = 0;
-let totalBonus = 0;
 
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
 
@@ -44,9 +41,72 @@ let totalBonus = 0;
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
-let finalEmployeeData = [];
-console.log( employees );
-console.log(2 + 5 / 2);
+//Mary's code
+console.log(employees); // just to see if it's working
+
+for (let employeeItem of employees) { // loops through the employees array
+  let result = processEmployee(employeeItem);
+  console.log('Processed employee is: ', result); // logs the objects in the array individually
+} // end for loop
+
+function processEmployee(employee) {
+  console.log('Employee is ', employee);
+  let bonusPercentage = calculateBonusPercentage(employee);
+  let totalBonus = Number(employee.annualSalary) * bonusPercentage * 0.01;
+  let newEmployeeObj = { // object is created to create a new array of employees
+    name: employee.name,
+    totalCompensation: Number(employee.annualSalary) + totalBonus,
+    bonusPercentage: bonusPercentage, // input the function for this key value
+    totalBonus: totalBonus
+  }
+  return newEmployeeObj;
+} // end processEmployee function
+
+function calculateBonusPercentage(employee) {
+  let bonusPercentage = 0;
+  switch (employee.reviewRating) { // using a switch because there are many parameters
+    // different than if else statements...how?
+    case 0: // probably better to do if else with this scenerio
+    case 1:
+    case 2: 
+      bonusPercentage = 0; // redundant, but don't want to lose what should happen with this
+      break;
+    case 3:
+      bonusPercentage = 4;
+      break;
+    case 4:
+      bonusPercentage = 6; 
+      break;
+    case 5:
+      bonusPercentage = 10;
+      break;
+  }
+  if (employee.reviewRating > 2 && employee.employeeNumber.length === 4) { // can use .length on a dot property :)
+    bonusPercentage += 5;
+  }
+
+  if (employee.annualSalary > 65000) {
+    bonusPercentage -= 1;
+  }
+
+  if (bonusPercentage < 0) {
+    bonusPercentage = 0;
+  } else if (bonusPercentage > 13) {
+    bonusPercentage = 13;
+  }
+
+  return bonusPercentage;
+} // end calculateBonusPercentage function
+
+/* Carl, Cassen, and Kim's code
+
+let bonusPercentage = 0;
+let totalCompensation = 0;
+let totalBonus = 0;
+
+//let finalEmployeeData = [];
+//console.log( employees );
+//console.log(2 + 5 / 2);
 
 function employeeData(employees) {
   for (let i = 0; i < employees.length; i++) {
@@ -80,10 +140,16 @@ function calculateBonus(person) {
    bonusPercentage = 0;
  } // floor on bonusPercentage
  
-console.log('Total Bonus Percentage: ');
-return bonusPercentage;
-totalCompCalculation();
-totalBonusCalculation();
+console.log('Total Bonus Percentage: ', bonusPercentage);
+
+let grossYearly = 0;
+grossYearly = Number(person.annualSalary) + (Number(person.annualSalary) * bonusPercentage)/100;
+//grossYearly = Number(grossYearly) / 100;
+console.log(grossYearly);
+console.log(Number(person.annualSalary));
+
+let totalBonus = Number(grossYearly - person.annualSalary);
+console.log(totalBonus);
 
 let newEmployeeData = {
   name: name,
@@ -99,11 +165,13 @@ finalEmployeeData.push(newEmployeeData);
 function totalCompCalculation(){
   let grossYearly = person.annualSalary + (person.annualSalary * person.bonusPercentage);
   grossYearly = grossYearly / 100;
+  console.log(grossYearly);
   return grossYearly;
 } // end totalCompCalculation function
 
 function totalBonusCalculation(){
   let totalBonus = grossYearly - person.annualSalary;
+  console.log(totalBonus);
   return totalBonus;
-} // end totalBonusCalculation function
+} // end totalBonusCalculation function*/
 
