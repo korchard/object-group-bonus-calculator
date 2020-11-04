@@ -32,7 +32,7 @@ const employees = [
 ];
 
 let bonusPercentage = 0;
-let totalCompensation = grossYearly;
+let totalCompensation = 0;
 let totalBonus = 0;
 
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
@@ -44,6 +44,7 @@ let totalBonus = 0;
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
+let finalEmployeeData = [];
 console.log( employees );
 console.log(2 + 5 / 2);
 
@@ -83,7 +84,16 @@ console.log('Total Bonus Percentage: ');
 return bonusPercentage;
 totalCompCalculation();
 totalBonusCalculation();
- // employeeBonus.push({name: employees[i].name, bonusPercentage: });
+
+let newEmployeeData = {
+  name: name,
+  bonusPercentage: bonusPercentage,
+  totalCompensation: totalCompensation,
+  totalBonus: totalBonus
+};
+
+finalEmployeeData.push(newEmployeeData);
+
 } //end calculateBonus
 
 function totalCompCalculation(){
@@ -97,11 +107,3 @@ function totalBonusCalculation(){
   return totalBonus;
 } // end totalBonusCalculation function
 
-function newEmployeeObject(name, bonusPercentage, totalCompensation, totalBonus) {
-  let newEmployeeData = {
-    name: name,
-    bonusPercentage: bonusPercentage,
-    totalCompensation: totalCompensation,
-    totalBonus: totalBonus
-  };
-}
