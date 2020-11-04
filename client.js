@@ -41,3 +41,18 @@ const employees = [
 // Ask questions when you don't.
 
 console.log( employees );
+
+function employeeData(employees) {
+  for (let i = 0; i < employees.length; i++) {
+    console.log(employees[i]);
+  } // end for loop
+} // end employeeData function
+
+function calculateBonus(employee) {
+  //let employeeBonus = [];
+  //let bonusPercentage = logic..;
+  //let totalCompensation = logic..;
+  //let totalBonus = logic..;
+  employeeBonus.push({name: employees[i].name, bonusPercentage: })
+}
+
