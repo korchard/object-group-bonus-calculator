@@ -41,137 +41,56 @@ const employees = [
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
-//Mary's code
-console.log(employees); // just to see if it's working
 
-for (let employeeItem of employees) { // loops through the employees array
-  let result = processEmployee(employeeItem);
-  console.log('Processed employee is: ', result); // logs the objects in the array individually
+
+//Kim's code working with Cassen and Carl...and lots of help from Mary's live share
+
+console.log( employees ); // to ensure it's connected and working
+
+for (let i = 0; i < employees.length; i++) { // function is not needed here
+  console.log('Employee Bonus Info: ', employeeObject(employees[i]));
 } // end for loop
 
-function processEmployee(employee) {
+// created a function that makes the new objects of employees - my group couldn't figure out how to get this aspect, got formatting and code from Mary
+function employeeObject(employee) {
   console.log('Employee is ', employee);
-  let bonusPercentage = calculateBonusPercentage(employee);
+  let bonusPercentage = calculateBonus(employee); //need to declare and call this function before the property value, or else it returns 'bonusPercentage undefined'
   let totalBonus = Number(employee.annualSalary) * bonusPercentage * 0.01;
   let newEmployeeObj = { // object is created to create a new array of employees
-    name: employee.name,
-    totalCompensation: Number(employee.annualSalary) + totalBonus,
+    name: employee.name, // property taken from inital employees array
+    totalCompensation: Number(employee.annualSalary) + totalBonus, // need to use Number method to change the string of annualSalary to a number
     bonusPercentage: bonusPercentage, // input the function for this key value
     totalBonus: totalBonus
-  }
+  };
   return newEmployeeObj;
-} // end processEmployee function
+} // end employeeObject function
 
-function calculateBonusPercentage(employee) {
+function calculateBonus(employee) {
   let bonusPercentage = 0;
-  switch (employee.reviewRating) { // using a switch because there are many parameters
-    // different than if else statements...how?
-    case 0: // probably better to do if else with this scenerio
-    case 1:
-    case 2: 
-      bonusPercentage = 0; // redundant, but don't want to lose what should happen with this
-      break;
-    case 3:
-      bonusPercentage = 4;
-      break;
-    case 4:
-      bonusPercentage = 6; 
-      break;
-    case 5:
-      bonusPercentage = 10;
-      break;
-  }
-  if (employee.reviewRating > 2 && employee.employeeNumber.length === 4) { // can use .length on a dot property :)
-    bonusPercentage += 5;
-  }
-
-  if (employee.annualSalary > 65000) {
-    bonusPercentage -= 1;
-  }
-
-  if (bonusPercentage < 0) {
-    bonusPercentage = 0;
-  } else if (bonusPercentage > 13) {
-    bonusPercentage = 13;
-  }
-
-  return bonusPercentage;
-} // end calculateBonusPercentage function
-
-/* Carl, Cassen, and Kim's code
-
-let bonusPercentage = 0;
-let totalCompensation = 0;
-let totalBonus = 0;
-
-//let finalEmployeeData = [];
-//console.log( employees );
-//console.log(2 + 5 / 2);
-
-function employeeData(employees) {
-  for (let i = 0; i < employees.length; i++) {
-    console.log(employees[i]);
-  } // end for loop
-} // end employeeData function
-
-function calculateBonus(person) {
- if(person.reviewRating <= 2){
+ if (employee.reviewRating <= 2) {
    bonusPercentage = 0;
- }
- else if(person.reviewRating == 3){
+ } else if (employee.reviewRating == 3) {
    bonusPercentage = 4;
- }
- else if(person.reviewRating == 4){
+ } else if (employee.reviewRating == 4) {
    bonusPercentage = 6;
- } 
- else if(person.reviewRating == 5){
+ } else if (employee.reviewRating == 5) {
    bonusPercentage = 10;
  } // end reviewRating conditional
- if(person.employeeNumber < 10000){
-   bonusPercentage = bonusPercentage + 5;
+
+ if (employee.employeeNumber.length == 4) { 
+   bonusPercentage += 5;
  } // end employeeNumber conditional
- if(person.annualSalary >= 65000){
-   bonusPercentage = bonusPercentage - 1;
+
+ if (Number(employee.annualSalary) >= 65000) { // need to use Number to change from string to num
+   bonusPercentage -= 1;
  } // end annualSalary conditional
+
  if(bonusPercentage > 13){
-   bonusPercentage = 13;
- } // ceiling on bonusPercentage
- if(bonusPercentage < 0){
+   bonusPercentage = 13; // ceiling on bonusPercentage
+ } else if (bonusPercentage < 0){
    bonusPercentage = 0;
  } // floor on bonusPercentage
  
 console.log('Total Bonus Percentage: ', bonusPercentage);
-
-let grossYearly = 0;
-grossYearly = Number(person.annualSalary) + (Number(person.annualSalary) * bonusPercentage)/100;
-//grossYearly = Number(grossYearly) / 100;
-console.log(grossYearly);
-console.log(Number(person.annualSalary));
-
-let totalBonus = Number(grossYearly - person.annualSalary);
-console.log(totalBonus);
-
-let newEmployeeData = {
-  name: name,
-  bonusPercentage: bonusPercentage,
-  totalCompensation: totalCompensation,
-  totalBonus: totalBonus
-};
-
-finalEmployeeData.push(newEmployeeData);
-
+return bonusPercentage;
 } //end calculateBonus
-
-function totalCompCalculation(){
-  let grossYearly = person.annualSalary + (person.annualSalary * person.bonusPercentage);
-  grossYearly = grossYearly / 100;
-  console.log(grossYearly);
-  return grossYearly;
-} // end totalCompCalculation function
-
-function totalBonusCalculation(){
-  let totalBonus = grossYearly - person.annualSalary;
-  console.log(totalBonus);
-  return totalBonus;
-} // end totalBonusCalculation function*/
-
